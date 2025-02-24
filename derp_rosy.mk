@@ -14,12 +14,18 @@
 # limitations under the License.
 #
 
-# Inherit some common LineageOS stuff
+# Inherit some common Derpfest stuff
 $(call inherit-product, vendor/derp/config/common_full_phone.mk)
-TARGET_USES_PICO_GAPPS := true
+
+TARGET_NO_GAPPS := true
 
 # Inherit from rosy device
 $(call inherit-product, device/xiaomi/rosy/full_rosy.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := derp_rosy
+
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-derp
+
+PRODUCT_PACKAGES += \
+    DocumentsUI
